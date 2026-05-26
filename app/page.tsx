@@ -2,29 +2,32 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { motion } from "framer-motion"
+import { SignInButton, UserButton, SignedIn, SignedOut } from "@clerk/nextjs"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white relative overflow-hidden">
-    {/* Background Gradients */}
+      {/* Background Gradients */}
 
-<div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-500/20 blur-3xl rounded-full" />
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-500/20 blur-3xl rounded-full" />
 
-<div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/20 blur-3xl rounded-full" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/20 blur-3xl rounded-full" />
       {/* Navbar */}
       <nav className="flex items-center justify-between px-8 py-6 border-b border-gray-800">
-        <h1 className="text-2xl font-bold">
-          PrepAI
-        </h1>
+        <h1 className="text-2xl font-bold">PrepAI</h1>
 
-        <div className="flex gap-4">
-          <Button variant="ghost">
-            Login
-          </Button>
+        <div className="flex gap-4 items-center">
+          <SignedOut>
+            <SignInButton mode="modal">
+              <Button>Login</Button>
+            </SignInButton>
+          </SignedOut>
 
-          <Button>
-            Get Started
-          </Button>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+
+          <Button>Get Started</Button>
         </div>
       </nav>
 
